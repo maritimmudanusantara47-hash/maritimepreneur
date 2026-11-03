@@ -9,7 +9,6 @@ export default function NavBar() {
 	const { t } = useContext(LanguageContext);
 	const location = useLocation();
 	const isHome = location.pathname === "/";
-	const isService = location.pathname === "/services";
 	const isCatalogue = location.pathname === "/catalogue";
 	const isSupport = location.pathname === "/support";
 	const [navbar, setNavbar] = useState(false);
@@ -134,22 +133,6 @@ export default function NavBar() {
 									}}
 								>
 									{t("catalogue")}
-								</Link>
-							</li>
-							<li
-								className={`text-secondary-color hover:opacity-80 cursor-pointer ${
-									isService ? "active" : ""
-								} ${underlineNavLink}`}
-							>
-								<Link
-									to="/services"
-									onClick={() => {
-										if (!isService) {
-											window.scrollTo(0, 0);
-										}
-									}}
-								>
-									{t("services")}
 								</Link>
 							</li>
 							<li
