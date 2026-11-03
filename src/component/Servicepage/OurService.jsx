@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { LanguageContext } from '../../utils/LanguageContext';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -15,33 +16,49 @@ const ServiceSection = ({ image, title, subtitle, services, imagePosition = 'lef
         <section className="max-w-7xl mx-auto px-6 md:px-12 py-12 lg:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div className={`w-full ${imageOrder}`} data-aos="fade-up">
-                <img
-                    src={image}
-                    alt={title}
-                    className="w-full max-w-md mx-auto h-auto"
-                />
+                    <img
+                        src={image}
+                        alt={title}
+                        className="w-full max-w-md mx-auto h-auto"
+                    />
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="100">
-                <h2 className="text-2xl lg:text-3xl font-semibold text-primary-color">{title}</h2>
-                <p className="mt-3 text-base lg:text-lg text-gray-600">{subtitle}</p>
-                <hr className="my-5" />
+                    <h2 className="text-2xl lg:text-3xl font-semibold text-primary-color">{title}</h2>
+                    <p className="mt-3 text-base lg:text-lg text-gray-600">{subtitle}</p>
+                    <hr className="my-5" />
 
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
-                    {services.map((service, index) => (
-                    <li key={index} className="flex items-start text-gray-700 text-sm lg:text-base">
-                        <svg
-                        className="w-5 h-5 mr-2 mt-1 text-blue-600 flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span>{service}</span>
-                    </li>
-                    ))}
-                </ul>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                        {services.map((service, index) => {
+                            const isEdutrip = service === 'Edutrip' || (typeof service === 'object' && service.name === 'Edutrip');
+                            const label = typeof service === 'object' ? service.name : service;
+                            const link = typeof service === 'object' ? service.link : (isEdutrip ? '/edutrip' : null);
+
+                            return (
+                                <li key={index} className="flex items-start text-gray-700 text-sm lg:text-base">
+                                    <svg
+                                        className="w-5 h-5 mr-2 mt-1 text-blue-600 flex-shrink-0"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    {link ? (
+                                        <Link
+                                            to={link}
+                                            onClick={() => window.scrollTo(0, 0)}
+                                            className="text-primary-color font-semibold hover:text-blue-600 hover:underline transition-colors cursor-pointer"
+                                        >
+                                            {label}
+                                        </Link>
+                                    ) : (
+                                        <span>{label}</span>
+                                    )}
+                                </li>
+                            );
+                        })}
+                    </ul>
                 </div>
             </div>
         </section>

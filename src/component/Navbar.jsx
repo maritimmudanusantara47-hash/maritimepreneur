@@ -135,7 +135,7 @@ export default function NavBar() {
 									{t("catalogue")}
 								</Link>
 							</li>
-							<li
+							{/* <li
 								className={`text-secondary-color hover:opacity-80 cursor-pointer ${
 									isSupport ? "active" : ""
 								} ${underlineNavLink}`}
@@ -150,7 +150,7 @@ export default function NavBar() {
 								>
 									{t("support")}
 								</Link>
-							</li>
+							</li> */}
 
 							<div className="relative inline-block text-left md:hidden">
 								<div
