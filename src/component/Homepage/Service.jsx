@@ -16,30 +16,36 @@ import CS from '../../assets/icon-cs.png';
 import EO from '../../assets/icon-eo.png';
 import ET from '../../assets/icon-et.png';
 
-const ServiceSection = ({ id, image, title, subtitle, services, imagePosition = 'left' }) => {
+const ServiceSection = ({ id, image, title, subtitle, services, pageLink, imagePosition = 'left' }) => {
+    const { language } = useContext(LanguageContext);
     const imageOrder = imagePosition === 'left' ? 'lg:order-first' : 'lg:order-last';
 
     return (
         <section id={id} className="max-w-7xl mx-auto px-6 md:px-12 py-12 lg:py-20 scroll-mt-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div className={`w-full ${imageOrder}`} data-aos="fade-up">
-                    <img
-                        src={image}
-                        alt={title}
-                        className="w-full max-w-md mx-auto h-auto"
-                    />
+                    <Link to={pageLink} onClick={() => window.scrollTo(0, 0)}>
+                        <img
+                            src={image}
+                            alt={title}
+                            className="w-full max-w-md mx-auto h-auto transition-transform duration-300 hover:scale-105"
+                        />
+                    </Link>
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <h2 className="text-2xl lg:text-3xl font-semibold text-primary-color">{title}</h2>
+                    <Link to={pageLink} onClick={() => window.scrollTo(0, 0)}>
+                        <h2 className="text-2xl lg:text-3xl font-semibold text-primary-color hover:text-blue-700 transition">
+                            {title}
+                        </h2>
+                    </Link>
                     <p className="mt-3 text-base lg:text-lg text-gray-600">{subtitle}</p>
                     <hr className="my-5" />
 
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6">
                         {services.map((service, index) => {
-                            const isEdutrip = service === 'Edutrip' || (typeof service === 'object' && service.name === 'Edutrip');
                             const label = typeof service === 'object' ? service.name : service;
-                            const link = typeof service === 'object' ? service.link : (isEdutrip ? '/edutrip' : null);
+                            const link = typeof service === 'object' ? service.link : null;
 
                             return (
                                 <li key={index} className="flex items-start text-gray-700 text-sm lg:text-base">
@@ -112,28 +118,66 @@ const Service = () => {
             title: t('edutrain'),
             subtitle: t('edutrainsub'),
             image: Service4,
-            services: [t('youth'), t('incubation'), t('profcertif'), t('career'), t('crew'), t('busmin'), t('higher'), t('oceansus'), t('ecobus'), t('ecotech')],
+            pageLink: '/business-academy',
+            services: [
+                { name: t('youth'), link: '/business-academy?course=maritime-entrepreneurship' },
+                { name: t('incubation'), link: '/business-academy?course=maritime-business-leadership' },
+                { name: t('profcertif'), link: '/business-academy?course=digital-marketing' },
+                { name: t('career'), link: '/business-academy?course=digital-finance' },
+                { name: t('crew'), link: '/business-academy?course=blue-finance' },
+                { name: t('busmin'), link: '/business-academy?course=maritime-business-mindset' },
+                { name: t('higher'), link: '/business-academy?course=maritime-resources-commercialization' },
+                { name: t('oceansus'), link: '/business-academy?course=ocean-sustainability-management' },
+                { name: t('ecobus'), link: '/business-academy?course=blue-economy-business-model' },
+                { name: t('ecotech'), link: '/business-academy?course=blue-economy-technology-management' }
+            ],
         },
         {
             id: 'consul',
             title: t('consulting'),
             subtitle: t('consultingsub'),
             image: Service3,
-            services: [t('industrial'), t('business'), t('tourism')],
+            pageLink: '/venture-builder',
+            services: [
+                { name: t('industrial'), link: '/venture-builder' },
+                { name: t('business'), link: '/venture-builder' },
+                { name: t('tourism'), link: '/venture-builder' }
+            ],
         },
         {
             id: 'event',
             title: t('eventorg'),
             subtitle: t('eventorgsub'),
             image: Service2,
-            services: [t('meeting'), t('incentives'), 'Travel', t('conference'), t('exhibition'), 'Edutrip', 'Festival', t('competition'), t('creative'), t('virtual')],
+            pageLink: '/events',
+            services: [
+                { name: t('meeting'), link: '/events' },
+                { name: t('incentives'), link: '/events' },
+                { name: 'Travel', link: '/events' },
+                { name: t('conference'), link: '/events' },
+                { name: t('exhibition'), link: '/events' },
+                { name: 'Edutrip', link: '/events#edutrip-section' },
+                { name: 'Festival', link: '/events' },
+                { name: t('competition'), link: '/events' },
+                { name: t('creative'), link: '/events' },
+                { name: t('virtual'), link: '/events' }
+            ],
         },
         {
             id: 'digitek',
             title: t('digitaltek'),
             subtitle: t('digiteksub'),
             image: Service1,
-            services: [t('mobileapp'), t('website'), t('bigdata'), t('multimedia'), t('sosmed'), t('digitalmark'), t('ecomm')],
+            pageLink: '/tech-development',
+            services: [
+                { name: t('mobileapp'), link: '/tech-development' },
+                { name: t('website'), link: '/tech-development' },
+                { name: t('bigdata'), link: '/tech-development' },
+                { name: t('multimedia'), link: '/tech-development' },
+                { name: t('sosmed'), link: '/tech-development' },
+                { name: t('digitalmark'), link: '/tech-development' },
+                { name: t('ecomm'), link: '/tech-development' }
+            ],
         }
     ];
 
@@ -170,6 +214,7 @@ const Service = () => {
                         subtitle={service.subtitle}
                         image={service.image}
                         services={service.services}
+                        pageLink={service.pageLink}
                         imagePosition={index % 2 === 0 ? 'left' : 'right'}
                     />
                     {index < servicesData.length - 1 && <div className="w-full bg-slate-200 h-px"></div>}
