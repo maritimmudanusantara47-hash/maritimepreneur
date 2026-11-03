@@ -32,7 +32,7 @@ const Footer = () => {
 							target="_blank"
 							rel="noreferrer"
 						>
-							Indonesia Blue Economy  (IBEC)
+							Indonesia Blue Economy Center (IBEC)
 							<br />
 							Kampus C STIE Indonesia Jakarta, Jalan Pratekan No.
 							9A Rawamangun
