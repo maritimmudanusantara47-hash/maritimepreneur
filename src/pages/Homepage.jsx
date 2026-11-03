@@ -8,7 +8,6 @@ import TrainedBy from '../component/Homepage/TrainedBy'
 import RegisterAt from '../component/Homepage/RegisterAt'
 import ContactFormAlt from '../component/Homepage/ContactFormAlt'
 import Service from '../component/Homepage/Service'
-import ServiceDetail from '../component/Homepage/ServiceDetail'
 import NavBar from '../component/Navbar'
 import Question from '../component/Homepage/Question'
 import BackToTopButton from '../component/BackToTop'
@@ -22,7 +21,6 @@ const Homepage = () => {
             <Becdex />
             <AboutUs />
             <Service />
-            <ServiceDetail />
             <MemberOf />
             <Client />
             <RegisterAt />
