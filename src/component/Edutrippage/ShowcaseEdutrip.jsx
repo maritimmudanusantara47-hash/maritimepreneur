@@ -1,3 +1,4 @@
+﻿import { FaCheck } from "react-icons/fa";
 import React, { useState, useContext, useEffect } from "react";
 import { LanguageContext } from "../../utils/LanguageContext";
 import ImgSdSmp from "../../assets/edutrip/edutrip-sd-smp.jpg";
@@ -268,7 +269,7 @@ const ShowcaseEdutrip = ({ onOpenRegisterModal }) => {
 											<ul className="space-y-1.5 text-xs text-gray-600">
 												{highlightList.slice(0, 4).map((act, i) => (
 													<li key={i} className="flex items-start gap-2">
-														<span className="text-emerald-500 mt-0.5 font-bold">✓</span>
+														<FaCheck className="text-emerald-500 mt-1 flex-shrink-0 text-[10px]" />
 														<span>{act}</span>
 													</li>
 												))}
