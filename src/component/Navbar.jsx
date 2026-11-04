@@ -5,6 +5,7 @@ import Translate from "../assets/ts.png";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageContext, languages } from "../utils/LanguageContext";
 import { coursesData } from "../utils/coursesData";
+import { IoLanguage } from "react-icons/io5";
 import { FaChevronDown, FaGraduationCap, FaShip, FaBookOpen, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 
 export default function NavBar() {
@@ -480,11 +481,7 @@ export default function NavBar() {
 									onClick={() => setIsLangOpen(!isLangOpen)}
 								>
 									<div className="flex items-center">
-										<img
-											src={Translate}
-											alt="Translate"
-											className="h-5 w-5 rounded-md inline-block mr-2"
-										/>
+										<IoLanguage className="text-xl inline-block mr-1.5" />
 										<span className="text-sm font-semibold">{currentLangObj.desk}</span>
 									</div>
 									<FaChevronDown size={12} />
@@ -497,11 +494,7 @@ export default function NavBar() {
 												className="py-1.5 px-3 text-xs cursor-pointer hover:bg-gray-200 rounded-lg flex items-center"
 												onClick={() => handleLanguageChange(l.code)}
 											>
-												<img
-													src={l.icon}
-													alt={l.label}
-													className="h-4 w-4 inline-block mr-2"
-												/>
+												{l.FlagIcon && <l.FlagIcon />}
 												<span className="font-medium text-gray-800">{l.label}</span>
 											</div>
 										))}
@@ -517,11 +510,7 @@ export default function NavBar() {
 							className="font-bold language-button cursor-pointer flex items-center text-sm"
 							onClick={() => setIsLangOpen(!isLangOpen)}
 						>
-							<img
-								src={Translate}
-								alt="Translate"
-								className="h-5 w-5 rounded-md inline-block mr-2"
-							/>
+							<IoLanguage className="text-xl inline-block mr-1.5" />
 							<span className={changeBg ? "text-primary-color" : "text-white"}>
 								{currentLangObj.desk}
 							</span>
@@ -540,11 +529,7 @@ export default function NavBar() {
 										className="py-2 px-3 text-xs cursor-pointer hover:bg-blue-50 rounded-xl flex items-center transition"
 										onClick={() => handleLanguageChange(l.code)}
 									>
-										<img
-											src={l.icon}
-											alt={l.label}
-											className="h-4 w-4 inline-block mr-2"
-										/>
+										{l.FlagIcon && <l.FlagIcon />}
 										<span className="font-semibold text-gray-800">{l.label}</span>
 									</div>
 								))}
