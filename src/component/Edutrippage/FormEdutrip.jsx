@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { BsWhatsapp } from "react-icons/bs";
 
-const packageOptions = [
-	"Edutrip Pelajar SD & SMP — 3 Hari 2 Malam (Rp 1.450.000)",
-	"Edutrip Pelajar SMA & Mahasiswa — 3 Hari 2 Malam (Rp 1.500.000)",
-	"Edutrip Masyarakat Umum — 3 Hari 2 Malam (Rp 1.600.000)",
+export const packageOptions = [
+	"Edutrip Pulau Pari — Pelajar SD & SMP (Rp 1.450.000)",
+	"Edutrip Pulau Pari — Pelajar SMA & Mahasiswa (Rp 1.500.000)",
+	"Edutrip Pulau Pari — Masyarakat Umum (Rp 1.600.000)",
+	"Edutrip Pulau Belitung — SMA, Mahasiswa & Umum (Rp 4.000.000 - Rp 5.000.000)",
+	"Edutrip Pulau Lembata — SMA, Mahasiswa & Umum (Rp 4.000.000 - Rp 6.000.000)",
+	"Edutrip Pulau Maratua — SMA, Mahasiswa & Umum (Rp 4.000.000 - Rp 7.000.000)",
+	"Edutrip Banda Neira — SMA, Mahasiswa & Umum (Rp 4.000.000 - Rp 7.000.000)",
 ];
 
 const statusOptions = [
@@ -14,39 +18,55 @@ const statusOptions = [
 	"MASYARAKAT UMUM",
 ];
 
-const FormEdutrip = ({ isOpen, onClose, selectedPackage, setSelectedPackage }) => {
+const FormEdutrip = ({
+	isOpen,
+	onClose,
+	selectedPackage,
+	setSelectedPackage,
+	availablePackages,
+}) => {
+	const packagesToDisplay =
+		availablePackages && availablePackages.length > 0
+			? availablePackages
+			: selectedPackage
+				? [selectedPackage]
+				: packageOptions;
+
 	const [formData, setFormData] = useState({
 		fullName: "",
 		email: "",
 		whatsapp: "",
 		status: "SD/SMP",
-		packageOption: selectedPackage || packageOptions[0],
+		packageOption: selectedPackage || (packagesToDisplay.length > 0 ? packagesToDisplay[0] : ""),
 		notes: "",
 	});
 
-	// Sync when selectedPackage changes
+	// Sync when selectedPackage or availablePackages changes
 	useEffect(() => {
 		let correspondingStatus = "SD/SMP";
-		if (selectedPackage && selectedPackage.includes("SMA & Mahasiswa")) {
+		if (
+			selectedPackage &&
+			(selectedPackage.includes("SMA & Mahasiswa") ||
+				selectedPackage.includes("SMA, Mahasiswa"))
+		) {
 			correspondingStatus = "SMA/MAHASISWA";
-		} else if (selectedPackage && selectedPackage.includes("Masyarakat Umum")) {
+		} else if (
+			selectedPackage &&
+			selectedPackage.includes("Masyarakat Umum")
+		) {
 			correspondingStatus = "MASYARAKAT UMUM";
 		}
 
-		if (selectedPackage && packageOptions.includes(selectedPackage)) {
-			setFormData((prev) => ({
-				...prev,
-				packageOption: selectedPackage,
-				status: correspondingStatus,
-			}));
-		} else if (packageOptions.length > 0) {
-			setFormData((prev) => ({
-				...prev,
-				packageOption: packageOptions[0],
-				status: statusOptions[0],
-			}));
-		}
-	}, [selectedPackage]);
+		const currentPkg =
+			selectedPackage ||
+			(packagesToDisplay.length > 0 ? packagesToDisplay[0] : "");
+
+		setFormData((prev) => ({
+			...prev,
+			packageOption: currentPkg,
+			status: correspondingStatus,
+		}));
+	}, [selectedPackage, availablePackages]);
 
 	// Close on Escape key
 	useEffect(() => {
@@ -117,8 +137,8 @@ const FormEdutrip = ({ isOpen, onClose, selectedPackage, setSelectedPackage }) =
 			return;
 		}
 
-		const template = 
-`Nama : ${formData.fullName.trim()}
+		const template =
+			`Nama : ${formData.fullName.trim()}
 Email : ${formData.email.trim()}
 Nomor Whatsapp : ${formData.whatsapp.trim()}
 Status : ${formData.status}
@@ -136,7 +156,7 @@ Catatan : ${formData.notes && formData.notes.trim() ? formData.notes.trim() : "-
 			email: "",
 			whatsapp: "",
 			status: statusOptions[0],
-			packageOption: packageOptions[0],
+			packageOption: packagesToDisplay.length > 0 ? packagesToDisplay[0] : "",
 			notes: "",
 		});
 
@@ -176,7 +196,7 @@ Catatan : ${formData.notes && formData.notes.trim() ? formData.notes.trim() : "-
 				</button>
 
 				<form onSubmit={handleSubmit} noValidate className="pt-2">
-					{/* Grid for Name and Email */}
+					{/* Grid for Name & Email */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
 						<div>
 							<label
@@ -284,37 +304,48 @@ Catatan : ${formData.notes && formData.notes.trim() ? formData.notes.trim() : "-
 						>
 							Pilihan Paket
 						</label>
-						<div className="relative">
-							<select
-								id="packageOption"
-								name="packageOption"
-								value={formData.packageOption}
-								onChange={handleChange}
-								className="w-full px-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 bg-white appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all text-sm sm:text-base pr-10 cursor-pointer"
-							>
-								{packageOptions.map((opt, i) => (
-									<option key={i} value={opt}>
-										{opt}
-									</option>
-								))}
-							</select>
-							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-400">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									className="h-4 w-4"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									strokeWidth={2}
+						{packagesToDisplay.length > 1 ? (
+							<div className="relative">
+								<select
+									id="packageOption"
+									name="packageOption"
+									value={formData.packageOption}
+									onChange={handleChange}
+									className="w-full px-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 bg-white appearance-none focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all text-sm sm:text-base pr-10 cursor-pointer"
 								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										d="M19 9l-7 7-7-7"
-									/>
-								</svg>
+									{packagesToDisplay.map((opt, i) => (
+										<option key={i} value={opt}>
+											{opt}
+										</option>
+									))}
+								</select>
+								<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-400">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										className="h-4 w-4"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										strokeWidth={2}
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											d="M19 9l-7 7-7-7"
+										/>
+									</svg>
+								</div>
 							</div>
-						</div>
+						) : (
+							<div className="relative">
+								<div
+									id="packageOption"
+									className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-slate-50 text-gray-800 font-semibold text-sm sm:text-base leading-relaxed break-words whitespace-normal"
+								>
+									{formData.packageOption}
+								</div>
+							</div>
+						)}
 					</div>
 
 					{/* Catatan (opsional) */}

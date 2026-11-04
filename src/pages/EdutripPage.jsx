@@ -9,16 +9,23 @@ import BackToTopButton from "../component/BackToTop";
 const EdutripPage = () => {
 	const [isFormModalOpen, setIsFormModalOpen] = useState(false);
 	const [selectedPackage, setSelectedPackage] = useState(
-		"Edutrip Pelajar SD & SMP — 3 Hari 2 Malam (Rp 1.450.000)"
+		"Edutrip Pulau Pari — Pelajar SD & SMP (Rp 1.450.000)"
 	);
+	const [availablePackages, setAvailablePackages] = useState([
+		"Edutrip Pulau Pari — Pelajar SD & SMP (Rp 1.450.000)",
+	]);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const handleOpenRegisterModal = (packageName) => {
-		if (packageName) {
-			setSelectedPackage(packageName);
+	const handleOpenRegisterModal = (pkgOrName, packages) => {
+		if (typeof pkgOrName === "object" && pkgOrName !== null) {
+			setSelectedPackage(pkgOrName.packageOptionName);
+			setAvailablePackages([pkgOrName.packageOptionName]);
+		} else if (typeof pkgOrName === "string") {
+			setSelectedPackage(pkgOrName);
+			setAvailablePackages(packages || [pkgOrName]);
 		}
 		setIsFormModalOpen(true);
 	};
@@ -37,6 +44,7 @@ const EdutripPage = () => {
 				onClose={handleCloseRegisterModal}
 				selectedPackage={selectedPackage}
 				setSelectedPackage={setSelectedPackage}
+				availablePackages={availablePackages}
 			/>
 			<Footer />
 			<BackToTopButton />
