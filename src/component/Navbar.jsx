@@ -1,7 +1,6 @@
 ﻿import React, { useState, useContext, useEffect, useRef } from "react";
 import Brand from "../assets/brand.png";
 import Brand2 from "../assets/brand2.png";
-import Translate from "../assets/ts.png";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageContext, languages } from "../utils/LanguageContext";
 import { coursesData } from "../utils/coursesData";
@@ -150,16 +149,14 @@ export default function NavBar() {
 
 					{/* Navigation Links */}
 					<div
-						className={`flex-1 justify-self-center pb-4 mt-4 md:block md:pb-0 md:mt-0 ${
-							navbar ? "block bg-white text-gray-800 p-6 rounded-2xl shadow-xl md:bg-transparent md:p-0 md:shadow-none" : "hidden"
-						}`}
+						className={`flex-1 justify-self-center pb-4 mt-4 md:block md:pb-0 md:mt-0 ${navbar ? "block bg-white text-gray-800 p-6 rounded-2xl shadow-xl md:bg-transparent md:p-0 md:shadow-none" : "hidden"
+							}`}
 					>
 						<ul className="items-center justify-center space-y-4 md:flex md:space-x-5 lg:space-x-7 md:space-y-0 text-[15px] lg:text-[16px] font-medium">
 							{/* 1. Home */}
 							<li
-								className={`${changeBg ? "text-primary-color" : "text-white"} hover:opacity-80 cursor-pointer ${
-									isHome ? "active" : ""
-								} ${underlineNavLink}`}
+								className={`${changeBg ? "text-primary-color" : "text-white"} hover:opacity-80 cursor-pointer ${isHome ? "active" : ""
+									} ${underlineNavLink}`}
 							>
 								<Link
 									to="/"
@@ -173,9 +170,8 @@ export default function NavBar() {
 
 							{/* 2. Startup Maritim (Catalogue) */}
 							<li
-								className={`${changeBg ? "text-primary-color" : "text-white"} hover:opacity-80 cursor-pointer ${
-									isCatalogue ? "active" : ""
-								} ${underlineNavLink}`}
+								className={`${changeBg ? "text-primary-color" : "text-white"} hover:opacity-80 cursor-pointer ${isCatalogue ? "active" : ""
+									} ${underlineNavLink}`}
 							>
 								<Link
 									to="/catalogue"
@@ -189,9 +185,8 @@ export default function NavBar() {
 
 							{/* 3. Business Academy (With Dropdown) */}
 							<li
-								className={`relative ${changeBg ? "text-primary-color" : "text-white"} hover:opacity-95 cursor-pointer ${
-									isBusinessAcademy ? "active" : ""
-								} ${underlineNavLink}`}
+								className={`relative ${changeBg ? "text-primary-color" : "text-white"} hover:opacity-95 cursor-pointer ${isBusinessAcademy ? "active" : ""
+									} ${underlineNavLink}`}
 								onMouseEnter={handleAcademyEnter}
 								onMouseLeave={handleAcademyLeave}
 							>
@@ -207,9 +202,8 @@ export default function NavBar() {
 									</Link>
 									<FaChevronDown
 										size={11}
-										className={`transition-transform duration-200 ${
-											isAcademyDropdownOpen ? "rotate-180" : ""
-										}`}
+										className={`transition-transform duration-200 ${isAcademyDropdownOpen ? "rotate-180" : ""
+											}`}
 									/>
 								</div>
 
@@ -228,9 +222,8 @@ export default function NavBar() {
 									>
 										<FaChevronDown
 											size={13}
-											className={`transition-transform ${
-												mobileAcademyOpen ? "rotate-180" : ""
-											}`}
+											className={`transition-transform ${mobileAcademyOpen ? "rotate-180" : ""
+												}`}
 										/>
 									</button>
 								</div>
@@ -313,9 +306,8 @@ export default function NavBar() {
 
 							{/* 3. Event (With Edutrip inside) */}
 							<li
-								className={`relative ${changeBg ? "text-primary-color" : "text-white"} hover:opacity-95 cursor-pointer ${
-									isEvent ? "active" : ""
-								} ${underlineNavLink}`}
+								className={`relative ${changeBg ? "text-primary-color" : "text-white"} hover:opacity-95 cursor-pointer ${isEvent ? "active" : ""
+									} ${underlineNavLink}`}
 								onMouseEnter={handleEventEnter}
 								onMouseLeave={handleEventLeave}
 							>
@@ -331,9 +323,8 @@ export default function NavBar() {
 									</Link>
 									<FaChevronDown
 										size={11}
-										className={`transition-transform duration-200 ${
-											isEventDropdownOpen ? "rotate-180" : ""
-										}`}
+										className={`transition-transform duration-200 ${isEventDropdownOpen ? "rotate-180" : ""
+											}`}
 									/>
 								</div>
 
@@ -352,9 +343,8 @@ export default function NavBar() {
 									>
 										<FaChevronDown
 											size={13}
-											className={`transition-transform ${
-												mobileEventOpen ? "rotate-180" : ""
-											}`}
+											className={`transition-transform ${mobileEventOpen ? "rotate-180" : ""
+												}`}
 										/>
 									</button>
 								</div>
@@ -442,9 +432,8 @@ export default function NavBar() {
 
 							{/* 4. Venture Builder */}
 							<li
-								className={`${changeBg ? "text-primary-color" : "text-white"} hover:opacity-80 cursor-pointer ${
-									isVentureBuilder ? "active" : ""
-								} ${underlineNavLink}`}
+								className={`${changeBg ? "text-primary-color" : "text-white"} hover:opacity-80 cursor-pointer ${isVentureBuilder ? "active" : ""
+									} ${underlineNavLink}`}
 							>
 								<Link
 									to="/venture-builder"
@@ -458,9 +447,8 @@ export default function NavBar() {
 
 							{/* 5. Tech Development */}
 							<li
-								className={`${changeBg ? "text-primary-color" : "text-white"} hover:opacity-80 cursor-pointer ${
-									isTechDev ? "active" : ""
-								} ${underlineNavLink}`}
+								className={`${changeBg ? "text-primary-color" : "text-white"} hover:opacity-80 cursor-pointer ${isTechDev ? "active" : ""
+									} ${underlineNavLink}`}
 							>
 								<Link
 									to="/tech-development"
@@ -516,9 +504,8 @@ export default function NavBar() {
 							</span>
 							<FaChevronDown
 								size={10}
-								className={`ml-1.5 transition-transform ${
-									isLangOpen ? "rotate-180" : ""
-								} ${changeBg ? "text-primary-color" : "text-white"}`}
+								className={`ml-1.5 transition-transform ${isLangOpen ? "rotate-180" : ""
+									} ${changeBg ? "text-primary-color" : "text-white"}`}
 							/>
 						</div>
 						{isLangOpen && (
