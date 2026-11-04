@@ -29,8 +29,8 @@ const FormEdutrip = ({
 		availablePackages && availablePackages.length > 0
 			? availablePackages
 			: selectedPackage
-			? [selectedPackage]
-			: packageOptions;
+				? [selectedPackage]
+				: packageOptions;
 
 	const [formData, setFormData] = useState({
 		fullName: "",
@@ -137,8 +137,8 @@ const FormEdutrip = ({
 			return;
 		}
 
-		const template = 
-`Nama : ${formData.fullName.trim()}
+		const template =
+			`Nama : ${formData.fullName.trim()}
 Email : ${formData.email.trim()}
 Nomor Whatsapp : ${formData.whatsapp.trim()}
 Status : ${formData.status}
@@ -196,7 +196,7 @@ Catatan : ${formData.notes && formData.notes.trim() ? formData.notes.trim() : "-
 				</button>
 
 				<form onSubmit={handleSubmit} noValidate className="pt-2">
-					{/* Grid for Name and Email */}
+					{/* Grid for Name & Email */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
 						<div>
 							<label
