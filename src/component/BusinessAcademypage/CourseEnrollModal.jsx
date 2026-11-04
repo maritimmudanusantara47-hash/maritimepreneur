@@ -1,7 +1,7 @@
 ﻿import React, { useState, useContext } from "react";
 import { LanguageContext } from "../../utils/LanguageContext";
 import { IoMdClose } from "react-icons/io";
-import { FaGraduationCap, FaCheckCircle } from "react-icons/fa";
+import { FaGraduationCap, FaCheckCircle, FaHourglassHalf, FaBullseye } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const CourseEnrollModal = ({ isOpen, onClose, selectedCourse }) => {
@@ -74,12 +74,8 @@ const CourseEnrollModal = ({ isOpen, onClose, selectedCourse }) => {
 						</button>
 					</div>
 					<div className="mt-4 flex flex-wrap gap-2 text-xs text-blue-100">
-						<span className="bg-white/10 px-3 py-1 rounded-full">
-							⏳ {selectedCourse.duration}
-						</span>
-						<span className="bg-white/10 px-3 py-1 rounded-full">
-							🎯 {selectedCourse.level}
-						</span>
+						<span className="bg-white/10 px-3 py-1 rounded-full inline-flex items-center gap-1.5"><FaHourglassHalf className="text-yellow-300 text-xs" /> {selectedCourse.duration}</span>
+						<span className="bg-white/10 px-3 py-1 rounded-full inline-flex items-center gap-1.5"><FaBullseye className="text-emerald-300 text-xs" /> {selectedCourse.level}</span>
 					</div>
 				</div>
 

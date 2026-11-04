@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
+﻿import React, { useState, useContext, useEffect, useRef } from "react";
 import Brand from "../assets/brand.png";
 import Brand2 from "../assets/brand2.png";
 import Translate from "../assets/ts.png";
@@ -434,7 +434,7 @@ export default function NavBar() {
 											onClick={() => setNavbar(false)}
 											className="block text-xs font-semibold text-emerald-700 py-1 hover:underline"
 										>
-											🚢 Maritime Edutrip 2026
+											<span className="inline-flex items-center gap-1.5"><FaShip className="text-emerald-600" /> Maritime Edutrip 2026</span>
 										</Link>
 									</div>
 								)}
