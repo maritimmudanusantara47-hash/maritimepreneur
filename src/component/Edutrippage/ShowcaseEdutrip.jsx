@@ -478,6 +478,7 @@ const ShowcaseEdutrip = ({ onOpenRegisterModal }) => {
 										language === "en" ? pkg.minPaxEn : pkg.minPax;
 									const durationLabel =
 										language === "en" ? pkg.durationEn : pkg.duration;
+									const isRange = pkg.price && pkg.price.includes("-");
 									const highlightList =
 										language === "en"
 											? pkg.highlightsEn
@@ -545,12 +546,18 @@ const ShowcaseEdutrip = ({ onOpenRegisterModal }) => {
 													</p>
 
 													{/* Price */}
-													<div className="py-3 px-4 bg-sky-50/70 rounded-xl mb-5 flex items-baseline justify-between border border-sky-100">
-														<span className="text-xs font-semibold text-sky-800">
+													<div className="py-3 px-4 bg-sky-50/70 rounded-xl mb-5 flex items-baseline justify-between gap-2 border border-sky-100">
+														<span className="text-xs font-semibold text-sky-800 shrink-0">
 															{language === "en" ? "Fee" : "Biaya"}
 														</span>
-														<div>
-															<span className="text-2xl font-extrabold text-primary-color">
+														<div className="whitespace-nowrap text-right">
+															<span
+																className={`${
+																	isRange
+																		? "text-xs sm:text-sm"
+																		: "text-xl sm:text-2xl"
+												} font-extrabold text-primary-color`}
+															>
 																{pkg.price}
 															</span>
 															<span className="text-xs text-gray-500 font-medium">
