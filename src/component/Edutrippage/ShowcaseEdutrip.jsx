@@ -18,9 +18,9 @@ const destinations = [
 		province: "Kepulauan Seribu, DKI Jakarta",
 		provinceEn: "Thousand Islands, Jakarta",
 		description:
-			"Eksplorasi ekosistem pesisir, penelitian oseanografi, pelestarian mangrove, serta snorkeling di perairan jernih Pulau Pari.",
+			"Edukasi ekosistem laut, Konservasi mangrove, Manajemen sampah pesisir, dan kemaritiman.",
 		descriptionEn:
-			"Explore coastal ecosystems, oceanography research, mangrove conservation, and snorkeling in Pari Island's pristine waters.",
+			"Marine ecosystem education, mangrove conservation, coastal waste management, and maritime studies.",
 		packages: [
 			{
 				id: "pari-sd-smp",
@@ -166,9 +166,9 @@ const destinations = [
 		province: "Bangka Belitung",
 		provinceEn: "Bangka Belitung",
 		description:
-			"Saksikan keunikan geologi formasi batu granit raksasa, literasi budaya maritim, ekosistem pesisir, dan konservasi mangrove Belitung.",
+			"Edukasi geologi batu granit, Literasi budaya, Sejarah laskar pelangi, Ekosistem pesisir dan UMKM lokal.",
 		descriptionEn:
-			"Witness unique giant granite rock formations, maritime culture literacy, coastal ecosystems, and mangrove conservation in Belitung.",
+			"Granite rock geological education, cultural literacy, Laskar Pelangi history, coastal ecosystems, and local MSMEs.",
 		packages: [
 			{
 				id: "belitung-sma-mhs-umum",
@@ -227,9 +227,9 @@ const destinations = [
 		province: "Nusa Tenggara Timur",
 		provinceEn: "East Nusa Tenggara",
 		description:
-			"Pelajari kearifan lokal budaya Lamaholot, kehidupan masyarakat pesisir tenun ikat, konservasi bahari, dan bentang alam memukau NTT.",
+			"Edukasi budaya Lamaholot, Kehidupan masyarakat pesisir tenun ikat, Ekologi laut, dan kearifan lokal.",
 		descriptionEn:
-			"Discover indigenous Lamaholot culture, traditional coastal ikat weaving communities, marine conservation, and breathtaking landscapes of East Nusa Tenggara.",
+			"Lamaholot cultural education, coastal ikat weaving community life, marine ecology, and local wisdom.",
 		packages: [
 			{
 				id: "lembata-sma-mhs-umum",
@@ -288,9 +288,9 @@ const destinations = [
 		province: "Kalimantan Timur",
 		provinceEn: "East Kalimantan",
 		description:
-			"Nikmati pesona laguna biru toska Derawan, konservasi terumbu karang dan penyu hijau, biodiversitas laut tropis, serta ekowisata kepulauan.",
+			"Edukasi konservasi terumbu karang dan penyu, Biodiversitas laut, Ekowisata masyarakat pulau.",
 		descriptionEn:
-			"Experience the stunning turquoise lagoon of Derawan archipelago, sea turtle and coral conservation, tropical marine biodiversity, and island eco-tourism.",
+			"Coral reef and sea turtle conservation education, marine biodiversity, and island community eco-tourism.",
 		packages: [
 			{
 				id: "maratua-sma-mhs-umum",
@@ -346,14 +346,14 @@ const destinations = [
 	},
 	{
 		id: "banda-neira",
-		name: "Banda Neira",
-		nameEn: "Banda Neira",
+		name: "Pulau Banda Neira",
+		nameEn: "Banda Neira Island",
 		province: "Maluku",
 		provinceEn: "Maluku",
 		description:
-			"Napak tilas episentrum jalur rempah dunia, benteng peninggalan kolonial, kekayaan budaya lokal, dan kemegahan taman laut Banda Neira.",
+			"Napak tilas Sejarah rempah, Kolonialisme, biodiversitas laut, budaya lokal, dan warisan sejarah Indonesia.",
 		descriptionEn:
-			"Trace the historic epicentre of the world spice trail, colonial heritage forts, vibrant local culture, and spectacular marine park of Banda Neira.",
+			"Tracing spice trade history, colonialism, marine biodiversity, local culture, and Indonesian historical heritage.",
 		packages: [
 			{
 				id: "banda-neira-sma-mhs-umum",
